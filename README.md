@@ -5,14 +5,14 @@ Gravitative Cable Car mod for Cities Skylines.
 This mod was written in the prefix method of Harmony so it will be incompatible with other mods which also change how cable cars are rendered. Right now this is just a proof-of-concept thing and cable cars are not popular so....I'll rewrite it using the transpiler method when I have more time to learn about it and a known incompatibility with another mod occurs.
 
 ## Release Note
-v0.1 - Proof of concept. Change the rotation of meshes for rendering.
+v0.1 - Proof of concept. Change the rotation of meshes for rendering so it looks more gravitative.
 
 ## Required Items
 Harmony: this mod overwrites a function the game uses to render cable cars. boformer's [Harmony mod](https://steamcommunity.com/workshop/filedetails/?id=2040656402) makes this a lot easier.
 Mass Transit DLC: You need this DLC to use cable cars.
 
 ## Goal & Future Plan
-The goal of this mod is to make cable cars move more realistically(from the viewpo
+The goal of this mod is to make cable cars move more realistically(from the viewpoint of the players) without messing too much with game physics. More features might be added.
 
 ## To-do
 - Rewrite using the transpiler method.
@@ -20,7 +20,6 @@ The goal of this mod is to make cable cars move more realistically(from the view
 ## Contact
 Steam workhsop [link](https://steamcommunity.com/sharedfiles/filedetails/?id=2094830335)  
 This is not my main Github account so you probably would get a faster response if you send me a Steam message
-
 
 ## FAQ
 
