@@ -1,6 +1,8 @@
 # GravitativeCableCar
 Gravitative Cable Car mod for Cities Skylines.
 
+This mod is still in the early proof-of-concept stage. Right now this experimental mod changes the rotation of a cable car vehicle for rendering, so it looks like they're subject to gravity, while the top/wheel part uses the original rotation. It doesn't change how cable cars actually move. Cable cars would sway in the original way so it still looks natural. Cable car assets need to be modified to get the best result.
+
 ## Warning
 This mod was written in the prefix method of Harmony so it will be incompatible with other mods which also change how cable cars are rendered. Right now this is just a proof-of-concept thing and cable cars are not popular so....I'll rewrite it using the transpiler method when I have more time to learn about it and a known incompatibility with another mod occurs.
 
