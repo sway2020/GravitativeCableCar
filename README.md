@@ -7,7 +7,12 @@ This mod is still in the early proof-of-concept stage. Right now this experiment
 This mod was written in the prefix method of Harmony so it will be incompatible with other mods which also change how cable cars are rendered. Right now this is just a proof-of-concept thing and cable cars are not popular so....I'll rewrite it using the transpiler method when I have more time to learn about it and a known incompatibility with another mod occurs.
 
 ## Release Note
-v0.1 - Proof of concept. Change the rotation of meshes for rendering so it looks more gravitative.
+
+v0.2 - Disable sway on the Y-axis so cable cars don't jump up and down on the cable  
+       This one is hard to explain in screenshots so I made a short [video clip](https://www.youtube.com/watch?v=B6mj6Y95eYk) to show the difference.  
+
+v0.1 - Proof of concept. Limit the rotation of meshes for rendering so it looks more gravitative.  
+       See the screenshots on the workshop [page](https://steamcommunity.com/sharedfiles/filedetails/?id=2094830335).  
 
 ## Required Items
 Harmony: this mod overwrites a function the game uses to render cable cars. boformer's [Harmony mod](https://steamcommunity.com/workshop/filedetails/?id=2040656402) makes this a lot easier.

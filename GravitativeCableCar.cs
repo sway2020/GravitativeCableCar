@@ -69,10 +69,15 @@ namespace GravitativeCableCar
                 return true;
             }
             
-            // Limit rotation along the x and z axes
+            // limit rotation along the x and z axes for all meshes except submesh1
+            // submesh1 would rotate in the original way(along with the cable)
             Quaternion originalRotation = rotation;
-            rotation.x = 0;
-            rotation.z = 0;
+            rotation.x = 0.0f;
+            rotation.z = 0.0f;
+
+            // change how cable cars sway
+            // so they don't move up and down on the cables as if they're ships moving in sea waves
+            swayPosition.y = 0.0f;
 
             if ((cameraInfo.m_layerMask & (1 << info.m_prefabDataLayer)) == 0)
             {
