@@ -66,4 +66,5 @@ Any comment/feedback is welcome! Although I have prior experience in other progr
 Here is an [anonymous Google form](https://forms.gle/13tXrXU5HFw3PrNRA) for people who don't have Github account and want to make feedback/bug/issue report in private or without letting me know their Steam/Github usernames.  
 
 ### How do I make my own cable car assets compatible with this mod?
+Because the top/wheel part should stay on the cable and rotate differently, we need to come up with a way for the mod to know where the top/wheel part is. I use submesh to achieve this but if anyone knows a better way feel free to let me know.
 Right now the mod changes the quaternion rotation of the main mesh and sub-meshes for rendering. The only exception is sub-mesh 1 which still uses the original rotation. So just put the wheels/top part of your cable car in submesh 1. Any other meshes will have zero rotation on the x and z axes so it looks like they're subject to gravity. I plan to make this more customizable in the future and I'd love to get suggestion from other cable car asset creators. If you have any question feel free to send me a message.
