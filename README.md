@@ -58,7 +58,9 @@ Option A needs more modding work. Asset creators can choose between B or C on th
 This mod does not touch you save data, game physics, or any other game data at all so it is unlikely this mod would break you save file. This mod only changes how cable cars are rendered in runtime and you can disable this mod any time. However it is always a good idea to back up your save file periodically. If it turns out this mod is the reason why your save file is broken, I'm not responsible for it although I will do my best to help you out.
 
 ### What can I do to help the development of this mod?
-Any comment/feedback is welcome! Although I have prior experience in other programming languages, I am not familiar with C#, Harmony or Unity at all. If you read the source code and find any issue or know a better way to make things work, feel free to comment below or use the issues tab on Github.
+Any comment/feedback is welcome! Although I have prior experience in other programming languages, I am not familiar with C#, Harmony or Unity at all. If you read the source code and find any issue or know a better way to make things work, feel free to comment below or use the issues tab on Github.  
+  
+Here is an [anonymous Google form](https://forms.gle/13tXrXU5HFw3PrNRA) for people who don't have Github account and want to make feedback/bug/issue report in private or without letting me know their Steam/Github usernames.  
 
 ### How do I make my own cable car assets compatible with this mod?
 Right now the mod changes the quaternion rotation of the main mesh and sub-meshes for rendering. The only exception is sub-mesh 1 which still uses the original rotation. So just put the wheels/top part of your cable car in submesh 1. Any other meshes will have zero rotation on the x and z axes so it looks like they're subject to gravity. I plan to make this more customizable in the future and I'd love to get suggestion from other cable car asset creators. If you have any question feel free to send me a message.
