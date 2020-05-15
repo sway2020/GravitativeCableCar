@@ -1,7 +1,7 @@
 # GravitativeCableCar
 Gravitative Cable Car mod for Cities Skylines.
 
-This mod is still in the early proof-of-concept stage. Right now this experimental mod changes the rotation of a cable car vehicle for rendering, so it looks like they're subject to gravity, while the top/wheel part uses the original rotation. It doesn't change how cable cars actually move. Cable cars would sway in the original way so it still looks natural. Cable car assets need to be modified to get the best result.
+This simple mod is still in the early proof-of-concept stage. It changes the rotation and sway position of a cable car vehicle before rendering, so it looks like they're subject to gravity. It doesn't change how cable cars actually move. Cable car assets need to be modified to get the best result.
 
 ## Warning
 This mod was written in the prefix method of Harmony so it will be incompatible with other mods which also change how cable cars are rendered. Right now this is just a proof-of-concept thing and cable cars are not popular so....I'll rewrite it using the transpiler method when I have more time to learn about it and a known incompatibility with another mod occurs.
@@ -58,7 +58,7 @@ Option A needs more modding work. Asset creators can choose between B or C on th
 This mod does not touch you save data, game physics, or any other game data at all so it is unlikely this mod would break you save file. This mod only changes how cable cars are rendered in runtime and you can disable this mod any time. However it is always a good idea to back up your save file periodically. If it turns out this mod is the reason why your save file is broken, I'm not responsible for it although I will do my best to help you out.
 
 ### What can I do to help the development of this mod?
-Any comment/feedback is welcome! I decided to publish this PoC 0.1 version so I can collect bug/issue reports and suggestions before I start rewriting this mod in a more proper way. Although I have prior experience in other programming languages, I am not familiar with C#, Harmony or Unity at all. If you read the source code and find any issue or know a better way to make things work, feel free to comment below or use the issues tab on Github.
+Any comment/feedback is welcome! Although I have prior experience in other programming languages, I am not familiar with C#, Harmony or Unity at all. If you read the source code and find any issue or know a better way to make things work, feel free to comment below or use the issues tab on Github.
 
 ### How do I make my own cable car assets compatible with this mod?
 Right now the mod changes the quaternion rotation of the main mesh and sub-meshes for rendering. The only exception is sub-mesh 1 which still uses the original rotation. So just put the wheels/top part of your cable car in submesh 1. Any other meshes will have zero rotation on the x and z axes so it looks like they're subject to gravity. I plan to make this more customizable in the future and I'd love to get suggestion from other cable car asset creators. If you have any question feel free to send me a message.
