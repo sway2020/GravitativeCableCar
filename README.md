@@ -1,7 +1,7 @@
 # GravitativeCableCar
 Gravitative Cable Car mod for Cities Skylines.
 
-This mod limits part of the rotation and sway of cable car vehicles before rendering, so it looks like they're subject to gravity. It doesn't change how cable cars actually move. Use Advanced Vehicle Options to change things like speed, sway scale, acceleration, etc. Cable car assets need to be modified to get the best result.
+In the vanilla game cable cars move unrealistically because the top/wheel part and the cabin part are combined together so the game physics handles them in the same way. In reality these two parts have different movements. This mod separates the parts and make them rotate/sway in different ways so it looks more realistic. It doesn't change how cable cars actually move on the path. Use [Advanced Vehicle Options](https://steamcommunity.com/sharedfiles/filedetails/?id=1548831935) to change things like speed, sway scale, acceleration, etc. Cable car assets need to be modified to get the best result.
 
 ## Warning
 This mod was written in the prefix method of Harmony so it will be incompatible with other mods which also change how cable cars are rendered. Right now this is just a proof-of-concept thing and cable cars are not popular so....I'll rewrite it using the transpiler method when I have more time to learn about it and a known incompatibility with another mod occurs.
@@ -9,7 +9,7 @@ This mod was written in the prefix method of Harmony so it will be incompatible 
 ## Release Note
 This mod is still in the proof-of-concept stage so expect frequent changes.
 
-v0.3 - Disable sway of the top/wheel part.
+v0.3 - Disable sway of the top/wheel part. [This short video](https://www.youtube.com/watch?v=ljHAi7EXB8k) explains the difference.
 
 v0.2 - Disable sway on the Y-axis so cable cars don't jump up and down on the cable  
        This one is hard to explain in screenshots so I made a short [video clip](https://www.youtube.com/watch?v=B6mj6Y95eYk) to show the difference.  
