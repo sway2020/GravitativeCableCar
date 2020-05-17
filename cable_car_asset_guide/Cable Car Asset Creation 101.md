@@ -1,5 +1,6 @@
 # Cable Car Asset Creation 101
-This is not a 3D modeling tutorial guide and it will not talk about modeling. It only shows the steps I did to make my colored cable car asset, and how to make it work with my gravitative cable car mod. This guide assumes you already know how to make other types of asset so many steps are skipped. It only covers some extra things needed to be done to make a cable car asset.
+This is not a 3D modeling tutorial guide and it will not talk about modeling. It only shows the steps I did to make my colored cable car asset, and how to make it work with my gravitative cable car mod. This guide assumes you already know how to make other types of asset so many steps are skipped. It only covers some extra things needed to be done to make a cable car asset.  
+  
 ![](https://i.imgur.com/ImDk6GS.png)
 
 ## Introduction
