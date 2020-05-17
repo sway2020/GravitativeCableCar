@@ -41,7 +41,7 @@ Vehicle shaders don't support submesh LOD, so just combine everything together i
 
 By default the cable car template uses the ship shader for the main mesh, and uses the default vehicle shader for the submeshs. The default car wheel detection mechanics for cars don't work well for cable cars. Cable cars have wheels above them, not below them. So we need to use vertex painting to fix the problem. More useful info on this can be found on Ronyx69's [website](https://cslmodding.info/shader/vehicle-wheels/).
 
-I'm okay with non-spinning wheels, so I just vertex paint everything in blue. If you want spinning wheels, I think it's possible but you need to do some extra steps(I never tried it). Each wheel needs to be a submesh if you want them spinning, and my mod doesn't support this yet so the spinning wheels would rotate together with the cabin part(unmodded behavior).  
+I'm okay with non-spinning wheels, so I just vertex paint everything in blue (rgb 0, 0, 255). If you want spinning wheels, I think it's possible but you need to do some extra steps(I never tried it). Each wheel needs to be a submesh if you want them spinning, and my mod doesn't support this yet so the spinning wheels would rotate together with the cabin part(unmodded behavior).  
 
 ![](https://i.imgur.com/wMBzYiu.jpg)
 
