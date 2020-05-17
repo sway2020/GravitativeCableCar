@@ -65,7 +65,7 @@ Repeat the same steps for top.fbx. I named it **New Asset1**
 Restart the game. Make sure ModTools is enabled. Go to the asset editor and import main.fbx as a vehicle using the cable car template.  
 ![](https://i.imgur.com/yhnRJoI.jpg)
 
-Here you should see some weird shading on the imported model. This is because by the default the cable car template uses the shader for ships on the main mesh so the vanilla cable cars look wet.  
+Here you should see some weird shading on the imported model. This is because by default the cable car template uses the shader for ships on the main mesh so the vanilla cable cars look wet.  
 ![](https://i.imgur.com/9tHeqxv.jpg)
 
 Click ctrl-E to open ModTools' scene explorer. Click  Show edited prefab.  
