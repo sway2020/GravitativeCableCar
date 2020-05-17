@@ -94,9 +94,10 @@ The cable car template uses the default vehicle shader for submeshes so we don't
 
 If you save it now as a new cable car asset and test it in the game, **some parts of your cable car are gonna rotate randomly like propellers.** This is caused by the default car wheel detection mechanics of the shader. 
 
-I wrote a [**script**](https://github.com/sway2020/GravitativeCableCar/blob/master/cable_car_asset_guide/cable_car_script.cs) to sovlve the problem. The script was modified from Ronyx69's car wheel script.  
+I wrote a [**script**](https://github.com/sway2020/GravitativeCableCar/blob/master/cable_car_asset_guide/cable_car_script.cs) to solve the problem. The script was modified from Ronyx69's car wheel script.  
 
-If you saved the prop version with a different name, the code needs to be changed slightly(check out the comments)
+If you saved the prop version with the same names (New Asset and New Asset1), you don't need to change the script.
+If you use different names, the code needs to be changed slightly(check out the comments)
 
 Click F7 to open ModTool's debug console. Copy and paste the script. Click run.
 If there are no new red error message after you run the script, you can save your cable car asset and test it in the game.   
