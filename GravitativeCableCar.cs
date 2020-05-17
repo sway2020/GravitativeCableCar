@@ -12,17 +12,23 @@ namespace GravitativeCableCar
     {
 
         public string Name => "Gravitative Cable Car";
-        public string Description => "make cable cars subject to gravity";
+        public string Description => "make cable cars subject to gravity v0.3";
 
         public void OnEnabled()
         {
             HarmonyHelper.DoOnHarmonyReady(() => Patcher.PatchAll());
+
+            TopSwayPosition = new Vector3(0.0f, 0.0f, 0.0f);
+
         }
 
         public void OnDisabled()
         {
             if (HarmonyHelper.IsHarmonyInstalled) Patcher.UnpatchAll();
         }
+
+        public static Vector3 TopSwayPosition;
+
     }
 
     public static class Patcher
@@ -38,6 +44,7 @@ namespace GravitativeCableCar
             UnityEngine.Debug.Log("Gravitative Cable Car: Patching...");
 
             patched = true;
+
 
             // Harmony.DEBUG = true;
             var harmony = new Harmony("sway.GravitativeCableCar");
@@ -55,6 +62,7 @@ namespace GravitativeCableCar
 
             UnityEngine.Debug.Log("Gravitative Cable Car: Reverted...");
         }
+
     }
 
     // Modified from Vehicle's RenderInstance method
@@ -79,6 +87,7 @@ namespace GravitativeCableCar
             // so they don't move up and down on the cables as if they're ships moving in sea waves
             swayPosition.y = 0.0f;
 
+
             if ((cameraInfo.m_layerMask & (1 << info.m_prefabDataLayer)) == 0)
             {
                 // return false to skip the original method
@@ -101,7 +110,7 @@ namespace GravitativeCableCar
             {
                 VehicleManager instance = Singleton<VehicleManager>.instance;
                 Matrix4x4 bodyMatrix = info.m_vehicleAI.CalculateBodyMatrix(flags, ref position, ref rotation, ref scale, ref swayPosition);
-                Matrix4x4 originalBodyMatrix = info.m_vehicleAI.CalculateBodyMatrix(flags, ref position, ref originalRotation, ref scale, ref swayPosition);
+                Matrix4x4 topBodyMatrix = info.m_vehicleAI.CalculateBodyMatrix(flags, ref position, ref originalRotation, ref scale, ref Mod.TopSwayPosition);
                 Matrix4x4 value = info.m_vehicleAI.CalculateTyreMatrix(flags, ref position, ref rotation, ref scale, ref bodyMatrix);
                 if (Singleton<InfoManager>.instance.CurrentMode == InfoManager.InfoMode.None)
                 {
@@ -166,7 +175,7 @@ namespace GravitativeCableCar
                                 subInfo.m_undergroundMaterial.SetVectorArray(instance.ID_TyreLocation, subInfo.m_generatedInfo.m_tyres);
                                 if (j == 1)
                                 {
-                                    Graphics.DrawMesh(subInfo.m_mesh, originalBodyMatrix, subInfo.m_undergroundMaterial, instance.m_undergroundLayer, null, 0, materialBlock);
+                                    Graphics.DrawMesh(subInfo.m_mesh, topBodyMatrix, subInfo.m_undergroundMaterial, instance.m_undergroundLayer, null, 0, materialBlock);
                                 }
                                 else
                                 {
@@ -178,7 +187,7 @@ namespace GravitativeCableCar
                                 subInfo.m_material.SetVectorArray(instance.ID_TyreLocation, subInfo.m_generatedInfo.m_tyres);
                                 if (j == 1)
                                 {
-                                    Graphics.DrawMesh(subInfo.m_mesh, originalBodyMatrix, subInfo.m_material, info.m_prefabDataLayer, null, 0, materialBlock);
+                                    Graphics.DrawMesh(subInfo.m_mesh, topBodyMatrix, subInfo.m_material, info.m_prefabDataLayer, null, 0, materialBlock);
                                 }
                                 else
                                 {
@@ -221,7 +230,7 @@ namespace GravitativeCableCar
                 return false;
             }
             Matrix4x4 bodyMatrix2 = info.m_vehicleAI.CalculateBodyMatrix(flags, ref position, ref rotation, ref scale, ref swayPosition);
-            Matrix4x4 originalBodyMatrix2 = info.m_vehicleAI.CalculateBodyMatrix(flags, ref position, ref originalRotation, ref scale, ref swayPosition);
+            Matrix4x4 topBodyMatrix2 = info.m_vehicleAI.CalculateBodyMatrix(flags, ref position, ref originalRotation, ref scale, ref Mod.TopSwayPosition);
             if (Singleton<ToolManager>.instance.m_properties.m_mode == ItemClass.Availability.AssetEditor)
             {
                 Matrix4x4 value2 = info.m_vehicleAI.CalculateTyreMatrix(flags, ref position, ref rotation, ref scale, ref bodyMatrix2);
@@ -286,7 +295,7 @@ namespace GravitativeCableCar
 
                             if (l == 1)
                             {
-                                subInfo2.m_undergroundLodTransforms[subInfo2.m_undergroundLodCount] = originalBodyMatrix2;
+                                subInfo2.m_undergroundLodTransforms[subInfo2.m_undergroundLodCount] = topBodyMatrix2;
                             }
                             else
                             {
@@ -306,7 +315,7 @@ namespace GravitativeCableCar
                         {
                             if (l == 1)
                             {
-                                subInfo2.m_lodTransforms[subInfo2.m_lodCount] = originalBodyMatrix2;
+                                subInfo2.m_lodTransforms[subInfo2.m_lodCount] = topBodyMatrix2;
                             }
                             else
                             {

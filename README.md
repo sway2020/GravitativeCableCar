@@ -1,12 +1,15 @@
 # GravitativeCableCar
 Gravitative Cable Car mod for Cities Skylines.
 
-This simple mod is still in the early proof-of-concept stage. It changes the rotation and sway position of a cable car vehicle before rendering, so it looks like they're subject to gravity. It doesn't change how cable cars actually move. Cable car assets need to be modified to get the best result.
+This mod limits part of the rotation and sway of cable car vehicles before rendering, so it looks like they're subject to gravity. It doesn't change how cable cars actually move. Use Advanced Vehicle Options to change things like speed, sway scale, acceleration, etc. Cable car assets need to be modified to get the best result.
 
 ## Warning
 This mod was written in the prefix method of Harmony so it will be incompatible with other mods which also change how cable cars are rendered. Right now this is just a proof-of-concept thing and cable cars are not popular so....I'll rewrite it using the transpiler method when I have more time to learn about it and a known incompatibility with another mod occurs.
 
 ## Release Note
+This mod is still in the proof-of-concept stage so expect frequent changes.
+
+v0.3 - Disable sway of the top/wheel part.
 
 v0.2 - Disable sway on the Y-axis so cable cars don't jump up and down on the cable  
        This one is hard to explain in screenshots so I made a short [video clip](https://www.youtube.com/watch?v=B6mj6Y95eYk) to show the difference.  
@@ -66,5 +69,5 @@ Any comment/feedback is welcome! Although I have prior experience in other progr
 Here is an [anonymous Google form](https://forms.gle/13tXrXU5HFw3PrNRA) for people who don't have Github account and want to make feedback/bug/issue report in private or without letting me know their Steam/Github usernames.  
 
 ### How do I make my own cable car assets compatible with this mod?
-Because the top/wheel part should stay on the cable and rotate differently, we need to come up with a way for the mod to know where the top/wheel part is. I use submesh to achieve this but if anyone knows a better way feel free to let me know.
-Right now the mod changes the quaternion rotation of the main mesh and sub-meshes for rendering. The only exception is sub-mesh 1 which still uses the original rotation. So just put the wheels/top part of your cable car in submesh 1. Any other meshes will have zero rotation on the x and z axes so it looks like they're subject to gravity. I plan to make this more customizable in the future and I'd love to get suggestion from other cable car asset creators. If you have any question feel free to send me a message.
+Because the top/wheel part should stay on the cable and rotate/sway differently, the mod needs to know where the top/wheel part is. This is done by using submeshes.
+So just put the top/wheel part of your cable car in submesh 1. Vehicle shaders don't support submesh LOD so combine sumbesh LODs with the main LOD. By default the cable car template uses the ship shader for the main mesh and uses the car shader for submesh for whatever reason. So without any tweaks the game might think the wheel/top part is a car wheel and spins it. I use modtools to change to use car shaders for all meshs, and use vertex painting to stop the shader from spinning things. I If you have any question about creating cable car assets feel free to send me a message. I'm not an experienced asset creator but I might be able to help.
