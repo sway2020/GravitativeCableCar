@@ -1,7 +1,7 @@
 # Cable Car Asset Creation 101
 This is not a 3D modeling tutorial guide and it will not talk about modeling. It only shows the steps I did to make my colored cable car asset, and how to make it work with my gravitative cable car mod. This guide assumes you already know how to make other types of asset so many steps are skipped. It only covers some extra things needed to be done to make a cable car asset.  
   
-![](https://i.imgur.com/bbXZ9Ce.jpg)
+![](https://i.imgur.com/tQLi7fI.png)
 
 ## Introduction
 At the moment there are only 4 custom cable car assets on the workshop, and only my asset would work 100% with my mod. I hope this guide will make more people interested in creating cable car assets. There might be some wrong information in the guide because I have no prior experience in making vehicle assets, and these are just the steps I did to make it work. 
@@ -60,7 +60,7 @@ It will show up below the ground which is fine. Save it and remember the filenam
 ![](https://i.imgur.com/Q9uJnyb.jpg)
 
 Repeat the same steps for top.fbx. I named it New Asset1  
-![](https://i.imgur.com/kJQ79tz.jpg)
+![](https://i.imgur.com/dDp4Icy.jpg)
 
 Restart the game. Make sure ModTools is enabled. Go to the asset editor and import main.fbx as a vehicle using the cable car template.  
 ![](https://i.imgur.com/yhnRJoI.jpg)
