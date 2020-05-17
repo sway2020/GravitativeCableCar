@@ -1,5 +1,6 @@
 # Cable Car Asset Creation 101
 This is not a 3D modeling tutorial guide and it will not talk about modeling. It only shows the steps I did to make my colored cable car asset, and how to make it work with my gravitative cable car mod. This guide assumes you already know how to make other types of asset so many steps are skipped. It only covers some extra things needed to be done to make a cable car asset.
+![](https://i.imgur.com/ImDk6GS.png)
 
 ## Introduction
 At the moment there are only 4 custom cable car assets on the workshop, and only my asset would work 100% with my mod. I hope this guide will make more people interested in creating cable car assets. There might be some wrong information in the guide because I have no prior experience in making vehicle assets, and these are just the steps I did to make it work. 
@@ -58,11 +59,11 @@ It will show up below the ground which is fine. Save it and remember the filenam
 Repeat the same steps for top.fbx. I named it New Asset1  
 ![](https://i.imgur.com/kJQ79tz.jpg)
 
-Restart the game. Make sure ModTools is enabled. Go to the asset editor and import main.fbx as a vehicle using the cable car template.
+Restart the game. Make sure ModTools is enabled. Go to the asset editor and import main.fbx as a vehicle using the cable car template.  
 ![](https://i.imgur.com/yhnRJoI.jpg)
 
 Here you should see some weird shading on the imported model. This is because by the default the cable car template uses the shader for ships on the main mesh so the vanilla cable cars look wet.  
-![])https://i.imgur.com/9tHeqxv.jpg)
+![](https://i.imgur.com/9tHeqxv.jpg)
 
 Click ctrl-E to open ModTools' scene explorer. Click  Show edited prefab.  
 ![](https://i.imgur.com/8imnx6d.jpg)
@@ -79,20 +80,19 @@ Change it to the default vehicle shader
 Now the weird shading is gone. Also you can use color variations with this shader.  
 ![](https://i.imgur.com/MKCY05w.jpg)
 
-Open open ModTools' scene explorer again. Find m_lodMaterial. By default the LOD mesh also uses ship shader. Expand it and change the shader to the default vehicle shader too (same steps as the main mesh). You will get an error message after you change the shader but it's fine.
+Open open ModTools' scene explorer again. Find m_lodMaterial. By default the LOD mesh also uses ship shader. Expand it and change the shader to the default vehicle shader too (same steps as the main mesh). You will get an error message after you change the shader but it's fine.  
 ![](https://i.imgur.com/VnHiRkl.jpg)
 
 Add top.fbx as a submesh. Gravitative cable car mod needs the top/wheel part to be the first submesh.
 ![](https://i.imgur.com/f1nW4MG.jpg)
 
-The cable car template uses the default vehicle shader for submeshes(different shaders for main mesh/submesh? why?)
-So we don't need to change the shader for the submesh. If you want to use the rotor shader for other submeshes, there are probably some extra things to do. I think Ronyx69's script for car windows would still work but I never tried it.
+The cable car template uses the default vehicle shader for submeshes so we don't need to change the shader for the submeshes. If you want to use the rotor shader for other submeshes, there are probably some extra things to do. I think Ronyx69's script for car windows would still work but I never tried it.
 
-If you save it now as a new cable car asset and test it in the game, some parts of your cable car are gonna rotate randomly like propellers. This is because the default car wheel detection mechanics doesn't work well with cable cars. 
+If you save it now as a new cable car asset and test it in the game, **some parts of your cable car are gonna rotate randomly like propellers.** This is caused by the default car wheel detection mechanics of the shader. 
 
 I wrote a [script](https://github.com/sway2020/GravitativeCableCar/blob/master/cable_car_asset_guide/cable_car_script.cs) to sovlve the problem. The script was modified from Ronyx69's car wheel script.  
 
-If you saved the prop version with a different name, the code needs to be changed slightly(check out the comment)
+If you saved the prop version with a different name, the code needs to be changed slightly(check out the comments)
 
 Click F7 to open ModTool's debug console. Copy and paste the script. Click run.
 If there are no new red error message after you run the script, you can save your cable car asset and test it in the game.  
