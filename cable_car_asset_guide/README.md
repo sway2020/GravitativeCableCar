@@ -10,7 +10,7 @@ The cable car template has many weird default behaviors, and I'll explain how to
 
 
 ## Model Preparation
-You model needs some preparation, or the cable car template in the asset editor is gonna do some crazy things to it. Cable cars would have some weird color/shading, and it might even spin like car wheels. It took me a lot of time to figure things out. 
+Your model needs some preparation, or the cable car template in the asset editor is gonna do some crazy things to it. Cable cars would have some weird color/shading, and it might even spin like car wheels. It took me a lot of time to figure things out. 
 
 I use Blender 2.82a so things might be a little different if you use other software.
 
