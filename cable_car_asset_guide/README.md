@@ -77,7 +77,8 @@ Scroll down and find m_material, click the + and expand it.
 Scroll down and you can see it uses the shader for ships which doesn't make any sense.  
 ![](https://i.imgur.com/Ts9azTW.jpg)
 
-Change it to the default vehicle shader.  
+Change it to the default vehicle shader.
+You can also write a script to change the shader to save time in the future.  
 ![](https://i.imgur.com/CUy9USy.jpg)
 
 Now the weird shading is gone. Also you can use color variations with this shader.  
