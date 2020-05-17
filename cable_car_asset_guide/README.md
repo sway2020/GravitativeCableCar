@@ -39,27 +39,27 @@ Vehicle shaders don't suppor submesh LOD, so just combine everything together in
 
 ![](https://i.imgur.com/AgJr1Pl.jpg)
 
-By default the cable car temple uses the ship shader for the main mesh, and uses the default car shader for the submeshs. The default car wheel detection mechanics for cars don't well work for cable cars. Cable cars have wheels above them, not below them. So we need to use vertex painting to fix the problem. More useful info on this can be found on Ronyx69's [website](https://cslmodding.info/shader/vehicle-wheels/).
+By default the cable car template uses the ship shader for the main mesh, and uses the default vehicle shader for the submeshs. The default car wheel detection mechanics for cars don't work well for cable cars. Cable cars have wheels above them, not below them. So we need to use vertex painting to fix the problem. More useful info on this can be found on Ronyx69's [website](https://cslmodding.info/shader/vehicle-wheels/).
 
-I'm okay with non-spinning wheel, so I just vertex paint everything in blue. If you want spinning wheels, I think it's possible but you need to do some extra steps(I never tried it).  
+I'm okay with non-spinning wheels, so I just vertex paint everything in blue. If you want spinning wheels, I think it's possible but you need to do some extra steps(I never tried it).  
 
 ![](https://i.imgur.com/wMBzYiu.jpg)
 
 Export your model as usual. OBJ doesn't support vertex color so use FBX or DAE.   
 
 Now I have:  
-main.fbx (main mesh for the cabin part)   
-top.fbx (main mesh for the top/wheel part)  
+main.fbx (mesh for the cabin part)   
+top.fbx (mesh for the top/wheel part, will be a submesh)  
 main_lod.fbx (LOD mesh)  
 
 ## Import
 
-Subscribe to BloodyPenguin's [ModTools](https://steamcommunity.com/sharedfiles/filedetails/?id=450877484). Copy your model and texture files to the import folder. Go to the asset editor and import main.fbx as a new prop. If you already have experience in making car and train assets, you probably already know what we are going to do. It is only a little bit different.
+Subscribe to BloodyPenguin's [ModTools](https://steamcommunity.com/sharedfiles/filedetails/?id=450877484). Copy your model and texture files to the import folder. Go to the asset editor and import main.fbx as a new **prop**. If you have experience in making car and train assets, you probably already know what we are going to do. It is only a little bit different.
 
-It will show up below the ground which is fine. Save it and remember the filename and asset name you choose. I used the default New Asset.    
+It will show up under the ground which is fine. Save it and remember the asset name you choose. I used the default **New Asset**    
 ![](https://i.imgur.com/Q9uJnyb.jpg)
 
-Repeat the same steps for top.fbx. I named it New Asset1  
+Repeat the same steps for top.fbx. I named it **New Asset1**  
 ![](https://i.imgur.com/dDp4Icy.jpg)
 
 Restart the game. Make sure ModTools is enabled. Go to the asset editor and import main.fbx as a vehicle using the cable car template.  
@@ -90,7 +90,7 @@ Open ModTools' scene explorer again. Find m_lodMaterial. By default the LOD mesh
 Add top.fbx as a submesh. Gravitative cable car mod needs the top/wheel part to be the first submesh.  
 ![](https://i.imgur.com/mw4Kj3X.jpg)
 
-The cable car template uses the default vehicle shader for submeshes so we don't need to change the shader for the submeshes. If you want to use the rotor shader for other submeshes, there are probably some extra things to do. I think Ronyx69's script for car windows would still work but I never tried it.
+The cable car template uses the default vehicle shader for submeshes so we don't need to change the shader for the submeshes. If you want to use the original ship shader for the main mesh, then you should change the shader for the submeshes or it would look weird. If you want to use the rotor shader for other submeshes, there are probably some extra things to do. I think Ronyx69's script for car windows would still work but I never tried it.
 
 If you save it now as a new cable car asset and test it in the game, **some parts of your cable car are gonna rotate randomly like propellers.** This is caused by the default car wheel detection mechanics of the shader. 
 
@@ -103,11 +103,11 @@ If there are no new red error message after you run the script, you can save you
 ![](https://i.imgur.com/FRwYFle.jpg)
 
 Subscribe to my [gravitative cable car mod](https://steamcommunity.com/workshop/filedetails/?id=2094830335), and see if the mod works with your cable car or any unexpected thing happens.
-Also check if it works fine when the mod is disabled. It will help me improve the mod.
+Also check if it works fine when the mod is disabled. It will help me improve the mod.  
 
 ## Next Steps
-If you find any mistakes, or you have any suggeston, feel free to contact me and I'll update this guide.  
+If you find any mistake, or you have any suggeston, feel free to contact me and I'll update this guide.  
 
-If you make a cable car asset that is compatible with my mod, send me a message so I can put your workshop link in the mod description. 
+If you make a cable car asset that is compatible with my mod, send me a message so I can put your workshop asset link in the mod description. 
 
-If you make a cable car asset with rotor shaders and would like to share the steps, I can combine it into this guide.  
+If you make a cable car asset with rotor shader and would like to share the steps, I can combine it into this guide.  
