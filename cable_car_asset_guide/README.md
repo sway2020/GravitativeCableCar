@@ -20,7 +20,7 @@ This is how it looks like in blender.
 
 ![](https://i.imgur.com/CLiX7w1.jpg)
 
-Keep it as a reference for the size and position of your cable car asset. The wheels should be at the same height as the vanilla ones, so your cable car will stay on the cables. If your cable car is larger than the vanilla one, if might not fit the cable car stations.
+Keep it as a reference for the size and position of your cable car asset. The wheels should be at the same height as the vanilla ones, so your cable car will stay on the cables. If your cable car is larger than the vanilla one, it might not fit the cable car stations.
 
 
 Make your model and texture in the same way as you would for other vehicle assets. Make sure the top/wheel part is separated from other parts if you want it to be compatible with the gravitative cable car mod. The mod needs the top/wheel part to be in a submesh. This is how my main model look like:
