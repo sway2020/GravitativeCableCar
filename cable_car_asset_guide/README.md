@@ -87,6 +87,8 @@ Now the weird shading is gone. Also you can use color variations with this shade
 Open ModTools' scene explorer again. Find m_lodMaterial. By default the LOD mesh also uses ship shader. Expand it and change the shader to the default vehicle shader too (same steps as the main mesh). You will get an error message after you change the shader but it's fine.    
 ![](https://i.imgur.com/VnHiRkl.jpg)
 
+I use a script to change the shaders faster. we go through the above steps just to let people know where the problem is. The script will be updated here after I clean it up and add some comments.  
+
 Add top.fbx as a submesh. Gravitative cable car mod needs the top/wheel part to be the first submesh.  
 ![](https://i.imgur.com/mw4Kj3X.jpg)
 
