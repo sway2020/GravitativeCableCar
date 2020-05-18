@@ -30,7 +30,7 @@ The goal of this mod is to make cable cars move more realistically(from the view
 ## Contact
 Steam workhsop [link](https://steamcommunity.com/sharedfiles/filedetails/?id=2094830335)  
 
-This is not my main Github account so you probably would get a faster response if you send me a Steam message  
+You can use Githib's issues tab or send me a Steam messge. This is not my main Github account so you probably would get a faster response if you send me a Steam message.  
 
 Here is an [anonymous Google form](https://forms.gle/13tXrXU5HFw3PrNRA) for people who don't have Github account and want to make feedback/bug/issue report in private or without letting me know their Steam/Github usernames. 
 
