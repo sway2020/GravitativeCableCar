@@ -75,19 +75,18 @@ Scroll down and find m_material, click the + and expand it.
 ![](https://i.imgur.com/OT8Q8K6.jpg) 
 
 Scroll down and you can see it uses the shader for ships which doesn't make any sense.  
+**We will use a script to change it, so don't change the shader now.**  
 ![](https://i.imgur.com/Ts9azTW.jpg)
 
-Change it to the default vehicle shader.  
-![](https://i.imgur.com/CUy9USy.jpg)
-
-Now the weird shading is gone. Also you can use color variations with this shader.  
-![](https://i.imgur.com/MKCY05w.jpg)
-
-Open ModTools' scene explorer again. Find m_lodMaterial. By default the LOD mesh also uses ship shader. Expand it and change the shader to the default vehicle shader too (same steps as the main mesh). You will get an error message after you change the shader but it's fine.    
+You can also check out m_lodMaterial. By default the LOD mesh also uses ship shader.  
+**We will use a script to change it, so don't change the shader now.**  
 ![](https://i.imgur.com/VnHiRkl.jpg)
 
 I wrote a [**script**](https://github.com/sway2020/GravitativeCableCar/blob/master/cable_car_asset_guide/shader.cs) to change the shaders faster. We go through the above steps just to let people know where the problem is.  
-Next time just click F7 to open ModTool's debug console. Copy and paste the script. Click run, and it will change the shader to the default vehicle shader for both m_material and m_lodMaterial.  
+Click F7 to open ModTool's debug console. Copy and paste the script. Click run, and it will change the shader to the default vehicle shader for both m_material and m_lodMaterial.  
+
+Now the weird shading is gone. Also you can use color variations with this shader.  
+![](https://i.imgur.com/MKCY05w.jpg)
 
 Add top.fbx as a submesh. Gravitative cable car mod needs the top/wheel part to be the first submesh.  
 ![](https://i.imgur.com/mw4Kj3X.jpg)
