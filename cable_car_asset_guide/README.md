@@ -41,7 +41,7 @@ Vehicle shaders don't support submesh LOD, so just combine everything together i
 
 By default the cable car template uses the ship shader for the main mesh, and uses the default vehicle shader for the submeshs. The default car wheel detection mechanics for cars don't work well for cable cars. Cable cars have wheels above them, not below them. So we need to use vertex painting to fix the problem. More useful info on this can be found on Ronyx69's [website](https://cslmodding.info/shader/vehicle-wheels/).
 
-I'm okay with non-spinning wheels, so I just vertex paint everything in blue (rgb 0, 0, 255). If you want spinning wheels, I think it's possible but you need to do some extra steps(I never tried it). 
+I'm okay with non-spinning wheels, so I just vertex paint everything in blue (rgb 0, 0, 255). If you want spinning wheels, I think it's possible but you need to do some extra steps(I never tried it). We will run a script later to copy the vertex colors.
 
 ![](https://i.imgur.com/wMBzYiu.jpg)
 
@@ -91,14 +91,14 @@ Now the weird shading is gone. Also you can use color variations with this shade
 Add top.fbx as a submesh. Gravitative cable car mod needs the top/wheel part to be the first submesh.  
 ![](https://i.imgur.com/mw4Kj3X.jpg)
 
-The cable car template uses the default vehicle shader for submeshes so we don't need to change the shader for the submeshes. If you want to use the original ship shader for the main mesh, then you should change the shader for the submeshes or it would look weird. If you want to use the rotor shader for other submeshes, there are probably some extra things to do. I think Ronyx69's script for car windows would still work but I never tried it.
+The cable car template uses the default vehicle shader for submeshes so we don't need to change the shader for the submeshes. If you want to use the rotor shader for other submeshes, there are probably some extra things to do. I think Ronyx69's script for car windows would still work but I never tried it.
 
 If you save it now as a new cable car asset and test it in the game, **some parts of your cable car are gonna rotate randomly like propellers.** This is caused by the default car wheel detection mechanics of the shader. 
 
 I wrote a [**script**](https://github.com/sway2020/GravitativeCableCar/blob/master/cable_car_asset_guide/cable_car_script.cs) to solve the problem. The script was modified from Ronyx69's car wheel script.  
 
 If you saved the prop version with the same names (New Asset and New Asset1), you don't need to change the script.
-If you use different names, the code needs to be changed slightly(check out the comments)
+If you use different names, the code needs to be changed slightly(check out the comments). If you have spinning parts and you didn't vertex paint everything in blue, remember to change the tire parameters in the script.
 
 Click F7 to open ModTool's debug console. Copy and paste the script. Click run.
 If there are no new red error message after you run the script, you can save your cable car asset and test it in the game.   
