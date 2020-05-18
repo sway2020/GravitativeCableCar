@@ -23,12 +23,12 @@ new Vector4(-0.739f, 0.328f, 1.421f, 0.328f)
 
 var main_vehicle_version = ToolsModifierControl.toolController.m_editPrefabInfo as VehicleInfo;
 Color[] colors = new Color[main_prop_version.m_mesh.vertices.Length];
-for (int i = 0; i < main_prop_version .m_mesh.vertices.Length; i++) colors[i] = main_prop_version .m_mesh.colors[i];
+for (int i = 0; i < main_prop_version.m_mesh.vertices.Length; i++) colors[i] = main_prop_version .m_mesh.colors[i];
 main_vehicle_version.m_mesh.colors = colors;
 main_vehicle_version.m_generatedInfo.m_tyres = tyres;
 
 var sm = (ToolsModifierControl.toolController.m_editPrefabInfo as VehicleInfo).m_subMeshes[1].m_subInfo;
 Color[] colors1 = new Color[top_prop_version.m_mesh.vertices.Length];
-for (int i = 0; i < top_prop_version .m_mesh.vertices.Length; i++) colors1[i] = top_prop_version .m_mesh.colors[i];
+for (int i = 0; i < top_prop_version.m_mesh.vertices.Length; i++) colors1[i] = top_prop_version .m_mesh.colors[i];
 sm.m_mesh.colors = colors1;
 sm.m_generatedInfo.m_tyres = tyres1;
