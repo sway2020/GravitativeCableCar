@@ -91,8 +91,12 @@ Now the weird shading is gone. Also you can use color variations with this shade
 Add top.fbx as a submesh. Gravitative cable car mod needs the top/wheel part to be the first submesh.  
 ![](https://i.imgur.com/mw4Kj3X.jpg)
 
-The cable car template uses the default vehicle shader for submeshes so we don't need to change the shader for the submeshes. If you want to use the rotor shader for other submeshes, there are probably some extra things to do. I think Ronyx69's script for car windows would still work but I never tried it.
+The cable car template uses the default vehicle shader for submeshes so we don't need to change the shader for the submeshes. If you want to use the [rotors shader](https://cslmodding.info/shader/rotors-vehicle/) to make semi-transparent windows, there are some extra things to do. Ronyx69's script for car windows still works. Here's my [example asset](https://steamcommunity.com/sharedfiles/filedetails/?id=2104173456). One thing to remember is that submeshes with the rotors shader can't sway, so the windows would look detached if the vehicle sways. You can run the following code to stop the sway:  
 
+var asset = ToolsModifierControl.toolController.m_editPrefabInfo as VehicleInfo;  
+asset.m_dampers = 1.0f;  
+asset.m_springs = 1.0f;  
+  
 If you save it now as a new cable car asset and test it in the game, **some parts of your cable car are gonna rotate randomly like propellers.** This is caused by the default car wheel detection mechanics of the shader. 
 
 I wrote a [**script**](https://github.com/sway2020/GravitativeCableCar/blob/master/cable_car_asset_guide/cable_car_script.cs) to solve the problem. The script was modified from Ronyx69's car wheel script.  
@@ -111,5 +115,3 @@ Also check if it works fine when the mod is disabled. It will help me improve th
 If you find any mistake, or you have any suggeston, feel free to contact me and I'll update this guide.  
 
 If you make a cable car asset that is compatible with my mod, send me a message so I can put your workshop asset link in the mod description. 
-
-If you make a cable car asset with rotor shader and would like to share the steps, I can combine it into this guide.  
