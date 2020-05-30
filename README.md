@@ -31,11 +31,9 @@ The goal of this mod is to make cable cars move more realistically(from the view
 - Rewrite using the transpiler method.
 
 ## Contact
-Steam workhsop [link](https://steamcommunity.com/sharedfiles/filedetails/?id=2094830335)  
+Steam workshop [link](https://steamcommunity.com/sharedfiles/filedetails/?id=2094830335)  
 
-You can use Githib's issues tab or send me a Steam messge. This is not my main Github account so you probably would get a faster response if you send me a Steam message.  
-
-Here is an [anonymous Google form](https://forms.gle/13tXrXU5HFw3PrNRA) for people who don't have Github account and want to make feedback/bug/issue report in private or without letting me know their Steam/Github usernames. 
+You can use Github's issues tab or via Steam. This repo is not under my main Github account so you probably will get a faster response if you send me a Steam message or leave a comment on the workshop page.  
 
 ## FAQ
 
