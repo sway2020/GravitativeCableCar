@@ -41,7 +41,7 @@ You can use Github's issues tab or via Steam. This repo is not under my main Git
 Unfortunately at the moment only my own assets would rotate fully in the intended way because I already modified them for testing:  
 [Modified Vanilla Cable Car](https://steamcommunity.com/sharedfiles/filedetails/?id=2095140359)  
 [Cable Car TR - LHT](https://steamcommunity.com/sharedfiles/filedetails/?id=2104173456)  
-[Calbe Car TR - RHT](https://steamcommunity.com/sharedfiles/filedetails/?id=2114149504)  
+[Cable Car TR - RHT](https://steamcommunity.com/sharedfiles/filedetails/?id=2114149504)  
 [Colored Cable Car](https://steamcommunity.com/sharedfiles/filedetails/?id=2088780350)  
 
 Vanilla cable cars and other cable car assets, without modification, would have the whole vehicle rotated like the third screenshot shows(see the wheels). I think this still looks better than the original. Now we have the smaller top/wheel part, not the cabin part, against the law of physics, and this is nearly unnoticeable when you watch from a long distance.  
