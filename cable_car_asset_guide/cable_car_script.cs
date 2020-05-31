@@ -16,9 +16,7 @@ new Vector4(-0.739f, 0.328f, 1.421f, 0.328f)
 };
 
 // This part copies vertex colors from the prop version to the vehicle version only for the
-// main part and the top/wheel part(main mehs and first submesh). 
-// I think Ronyx69's rotor shader script will still work for other submeshes if you want to have transparent windows
-// but I never tried to use rotor shader so I don't know how it works.
+// main part(main mesh) and the top/wheel part(first submesh). 
 // No need to change if you only have one submesh(for the top/wheel part).
 
 var main_vehicle_version = ToolsModifierControl.toolController.m_editPrefabInfo as VehicleInfo;
