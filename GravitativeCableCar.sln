@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GravitativeCableCar", "GravitativeCableCar.csproj", "{FABC1214-D912-4E35-90A1-933264C204AC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FABC1214-D912-4E35-90A1-933264C204AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FABC1214-D912-4E35-90A1-933264C204AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FABC1214-D912-4E35-90A1-933264C204AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FABC1214-D912-4E35-90A1-933264C204AC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6632FAFF-678A-46C5-8BFD-764A94FD1904}
+	EndGlobalSection
+EndGlobal
