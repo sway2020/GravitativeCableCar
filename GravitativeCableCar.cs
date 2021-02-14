@@ -11,8 +11,8 @@ namespace GravitativeCableCar
     public class Mod : IUserMod
     {
 
-        public string Name => "Gravitative Cable Car";
-        public string Description => "make cable cars subject to gravity v0.3";
+        public string Name => "Gravitative Cable Car 0.3.2";
+        public string Description => "make cable cars subject to gravity";
 
         public void OnEnabled()
         {
