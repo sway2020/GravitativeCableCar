@@ -11,7 +11,7 @@ namespace GravitativeCableCar
     public class Mod : IUserMod
     {
 
-        public string Name => "Gravitative Cable Car 0.3.3";
+        public string Name => "Gravitative Cable Car 0.3.4";
         public string Description => "makes cable cars subject to gravity";
 
         public void OnEnabled()
@@ -66,11 +66,11 @@ namespace GravitativeCableCar
     }
 
     // Modified from Vehicle's RenderInstance method
-    [HarmonyPatch(typeof(Vehicle), "RenderInstance", new Type[] { typeof(RenderManager.CameraInfo), typeof(VehicleInfo), typeof(Vector3), typeof(Quaternion), typeof(Vector3), typeof(Vector4), typeof(Vector4), typeof(Vector3), typeof(float), typeof(Color), typeof(Vehicle.Flags), typeof(int), typeof(InstanceID), typeof(bool), typeof(bool) })]
+    [HarmonyPatch(typeof(Vehicle), "RenderInstance", new Type[] { typeof(RenderManager.CameraInfo), typeof(VehicleInfo), typeof(Vector3), typeof(Quaternion), typeof(Vector3), typeof(Vector4), typeof(Vector4), typeof(Vector3), typeof(float), typeof(Color), typeof(Vehicle.Flags), typeof(Vehicle.Flags2), typeof(int), typeof(InstanceID), typeof(bool), typeof(bool) })]
     public static class VehicleRenderInstancePatch
     {
         // Run before the original method. Skip the original one if the vehicle is a cable car
-        public static bool Prefix(RenderManager.CameraInfo cameraInfo, VehicleInfo info, Vector3 position, ref Quaternion rotation, Vector3 swayPosition, Vector4 lightState, Vector4 tyrePosition, Vector3 velocity, float acceleration, Color color, Vehicle.Flags flags, int variationMask, InstanceID id, bool underground, bool overground)
+        public static bool Prefix(RenderManager.CameraInfo cameraInfo, VehicleInfo info, Vector3 position, ref Quaternion rotation, Vector3 swayPosition, Vector4 lightState, Vector4 tyrePosition, Vector3 velocity, float acceleration, Color color, Vehicle.Flags flags, Vehicle.Flags2 flags2, int variationMask, InstanceID id, bool underground, bool overground)
         {
             // if the vehicle is not a cable car, skip and use the original method
             if ((int)info.m_vehicleType != 0x1000){
@@ -87,7 +87,6 @@ namespace GravitativeCableCar
             // so they don't move up and down on the cables as if they're ships moving in sea waves
             swayPosition.y = 0.0f;
 
-
             if ((cameraInfo.m_layerMask & (1 << info.m_prefabDataLayer)) == 0)
             {
                 // return false to skip the original method
@@ -103,14 +102,15 @@ namespace GravitativeCableCar
                 lightState.z = vector.w;
                 lightState.w = vector.z;
             }
-
             info.m_vehicleAI.RenderExtraStuff(id.Vehicle, ref Singleton<VehicleManager>.instance.m_vehicles.m_buffer[id.Vehicle], cameraInfo, id, position, rotation, tyrePosition, lightState, scale, swayPosition, underground, overground);
-            
             if (cameraInfo.CheckRenderDistance(position, info.m_lodRenderDistance))
             {
                 VehicleManager instance = Singleton<VehicleManager>.instance;
                 Matrix4x4 bodyMatrix = info.m_vehicleAI.CalculateBodyMatrix(flags, ref position, ref rotation, ref scale, ref swayPosition);
+
+                // calculate body matric for the top part of the cable car
                 Matrix4x4 topBodyMatrix = info.m_vehicleAI.CalculateBodyMatrix(flags, ref position, ref originalRotation, ref scale, ref Mod.TopSwayPosition);
+
                 Matrix4x4 value = info.m_vehicleAI.CalculateTyreMatrix(flags, ref position, ref rotation, ref scale, ref bodyMatrix);
                 if (Singleton<InfoManager>.instance.CurrentMode == InfoManager.InfoMode.None)
                 {
@@ -121,7 +121,7 @@ namespace GravitativeCableCar
                         for (int i = 0; i < info.m_effects.Length; i++)
                         {
                             VehicleInfo.Effect effect = info.m_effects[i];
-                            if (((effect.m_vehicleFlagsRequired | effect.m_vehicleFlagsForbidden) & flags) == effect.m_vehicleFlagsRequired && effect.m_parkedFlagsRequired == VehicleParked.Flags.None)
+                            if (effect.m_effect != null && ((effect.m_vehicleFlagsRequired | effect.m_vehicleFlagsForbidden) & flags) == effect.m_vehicleFlagsRequired && ((effect.m_vehicleFlagsRequired2 | effect.m_vehicleFlagsForbidden2) & flags2) == effect.m_vehicleFlagsRequired2 && effect.m_parkedFlagsRequired == VehicleParked.Flags.None)
                             {
                                 effect.m_effect.RenderEffect(id, area, velocity, acceleration, 1f, -1f, Singleton<SimulationManager>.instance.m_simulationTimeDelta, cameraInfo);
                             }
@@ -173,6 +173,8 @@ namespace GravitativeCableCar
                                     }
                                 }
                                 subInfo.m_undergroundMaterial.SetVectorArray(instance.ID_TyreLocation, subInfo.m_generatedInfo.m_tyres);
+
+                                // use different body matrix tor draw the two parts of the cable car
                                 if (j == 1)
                                 {
                                     Graphics.DrawMesh(subInfo.m_mesh, topBodyMatrix, subInfo.m_undergroundMaterial, instance.m_undergroundLayer, null, 0, materialBlock);
@@ -185,6 +187,8 @@ namespace GravitativeCableCar
                             if (overground)
                             {
                                 subInfo.m_material.SetVectorArray(instance.ID_TyreLocation, subInfo.m_generatedInfo.m_tyres);
+
+                                // use different body matrix tor draw the two parts of the cable car
                                 if (j == 1)
                                 {
                                     Graphics.DrawMesh(subInfo.m_mesh, topBodyMatrix, subInfo.m_material, info.m_prefabDataLayer, null, 0, materialBlock);
@@ -230,7 +234,10 @@ namespace GravitativeCableCar
                 return false;
             }
             Matrix4x4 bodyMatrix2 = info.m_vehicleAI.CalculateBodyMatrix(flags, ref position, ref rotation, ref scale, ref swayPosition);
+
+            // calculate body matric for the top part of the cable car
             Matrix4x4 topBodyMatrix2 = info.m_vehicleAI.CalculateBodyMatrix(flags, ref position, ref originalRotation, ref scale, ref Mod.TopSwayPosition);
+
             if (Singleton<ToolManager>.instance.m_properties.m_mode == ItemClass.Availability.AssetEditor)
             {
                 Matrix4x4 value2 = info.m_vehicleAI.CalculateTyreMatrix(flags, ref position, ref rotation, ref scale, ref bodyMatrix2);
@@ -270,7 +277,7 @@ namespace GravitativeCableCar
                     for (int k = 0; k < info.m_effects.Length; k++)
                     {
                         VehicleInfo.Effect effect2 = info.m_effects[k];
-                        if (((effect2.m_vehicleFlagsRequired | effect2.m_vehicleFlagsForbidden) & flags) == effect2.m_vehicleFlagsRequired && effect2.m_parkedFlagsRequired == VehicleParked.Flags.None)
+                        if (effect2.m_effect != null && ((effect2.m_vehicleFlagsRequired | effect2.m_vehicleFlagsForbidden) & flags) == effect2.m_vehicleFlagsRequired && ((effect2.m_vehicleFlagsRequired2 | effect2.m_vehicleFlagsForbidden2) & flags2) == effect2.m_vehicleFlagsRequired2 && effect2.m_parkedFlagsRequired == VehicleParked.Flags.None)
                         {
                             effect2.m_effect.RenderEffect(id, area2, velocity, acceleration, 1f, -1f, Singleton<SimulationManager>.instance.m_simulationTimeDelta, cameraInfo);
                         }
@@ -292,7 +299,7 @@ namespace GravitativeCableCar
                         }
                         if (underground)
                         {
-
+                            // custom body matrix for the top part of the cable car
                             if (l == 1)
                             {
                                 subInfo2.m_undergroundLodTransforms[subInfo2.m_undergroundLodCount] = topBodyMatrix2;
@@ -301,9 +308,10 @@ namespace GravitativeCableCar
                             {
                                 subInfo2.m_undergroundLodTransforms[subInfo2.m_undergroundLodCount] = bodyMatrix2;
                             }
-                        
+
                             subInfo2.m_undergroundLodLightStates[subInfo2.m_undergroundLodCount] = lightState;
-                            subInfo2.m_undergroundLodColors[subInfo2.m_undergroundLodCount] = color.linear;
+                            ref Vector4 reference = ref subInfo2.m_undergroundLodColors[subInfo2.m_undergroundLodCount];
+                            reference = color.linear;
                             subInfo2.m_undergroundLodMin = Vector3.Min(subInfo2.m_undergroundLodMin, position);
                             subInfo2.m_undergroundLodMax = Vector3.Max(subInfo2.m_undergroundLodMax, position);
                             if (++subInfo2.m_undergroundLodCount == subInfo2.m_undergroundLodTransforms.Length)
@@ -313,6 +321,7 @@ namespace GravitativeCableCar
                         }
                         if (overground)
                         {
+                            // custom body matrix for the top part of the cable car
                             if (l == 1)
                             {
                                 subInfo2.m_lodTransforms[subInfo2.m_lodCount] = topBodyMatrix2;
@@ -321,8 +330,10 @@ namespace GravitativeCableCar
                             {
                                 subInfo2.m_lodTransforms[subInfo2.m_lodCount] = bodyMatrix2;
                             }
+
                             subInfo2.m_lodLightStates[subInfo2.m_lodCount] = lightState;
-                            subInfo2.m_lodColors[subInfo2.m_lodCount] = color.linear;
+                            ref Vector4 reference2 = ref subInfo2.m_lodColors[subInfo2.m_lodCount];
+                            reference2 = color.linear;
                             subInfo2.m_lodMin = Vector3.Min(subInfo2.m_lodMin, position);
                             subInfo2.m_lodMax = Vector3.Max(subInfo2.m_lodMax, position);
                             if (++subInfo2.m_lodCount == subInfo2.m_lodTransforms.Length)
@@ -339,13 +350,15 @@ namespace GravitativeCableCar
             }
             if (!flag3)
             {
+                // return false to skip the original method
                 return false;
             }
             if (underground)
             {
                 info.m_undergroundLodTransforms[info.m_undergroundLodCount] = bodyMatrix2;
                 info.m_undergroundLodLightStates[info.m_undergroundLodCount] = lightState;
-                info.m_undergroundLodColors[info.m_undergroundLodCount] = color.linear;
+                ref Vector4 reference3 = ref info.m_undergroundLodColors[info.m_undergroundLodCount];
+                reference3 = color.linear;
                 info.m_undergroundLodMin = Vector3.Min(info.m_undergroundLodMin, position);
                 info.m_undergroundLodMax = Vector3.Max(info.m_undergroundLodMax, position);
                 if (++info.m_undergroundLodCount == info.m_undergroundLodTransforms.Length)
@@ -357,7 +370,8 @@ namespace GravitativeCableCar
             {
                 info.m_lodTransforms[info.m_lodCount] = bodyMatrix2;
                 info.m_lodLightStates[info.m_lodCount] = lightState;
-                info.m_lodColors[info.m_lodCount] = color.linear;
+                ref Vector4 reference4 = ref info.m_lodColors[info.m_lodCount];
+                reference4 = color.linear;
                 info.m_lodMin = Vector3.Min(info.m_lodMin, position);
                 info.m_lodMax = Vector3.Max(info.m_lodMax, position);
                 if (++info.m_lodCount == info.m_lodTransforms.Length)
